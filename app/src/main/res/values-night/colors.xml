@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="bg">#12151C</color>
+    <color name="icon_bg">#1F7BFF</color>
+    <color name="w_bg">#F21B2030</color>
+    <color name="w_text">#EAEFFA</color>
+    <color name="w_sub">#A5AEC4</color>
+    <color name="w_line">#2A3146</color>
+    <color name="w_good">#3DD68C</color>
+    <color name="w_warn">#F0A050</color>
+    <color name="w_bad">#FF6B70</color>
+    <color name="w_gold">#F2BE3A</color>
+</resources>
