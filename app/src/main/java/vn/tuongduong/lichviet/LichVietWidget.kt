@@ -29,6 +29,7 @@ class LichVietWidget : AppWidgetProvider() {
 
     companion object {
         fun refreshAll(context: Context) {
+            LichVietMonthWidget.refreshAll(context)
             val mgr = AppWidgetManager.getInstance(context)
             val ids = mgr.getAppWidgetIds(ComponentName(context, LichVietWidget::class.java))
             if (ids.isEmpty()) return

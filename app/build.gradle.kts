@@ -11,8 +11,8 @@ android {
         applicationId = "vn.tuongduong.lichviet"
         minSdk = 26
         targetSdk = 35
-        versionCode = 3
-        versionName = "1.2.0"
+        versionCode = 4
+        versionName = "1.3.0"
     }
 
     // Ký bản phát hành: chỉ bật khi có biến môi trường (xem README.txt, mục CH Play).

@@ -10,4 +10,16 @@
     <color name="w_warn">#D9822B</color>
     <color name="w_bad">#E5484D</color>
     <color name="w_gold">#C98A00</color>
+    <color name="g_bg_top">#F7FFFFFF</color>
+    <color name="g_bg_bottom">#F2EDEFF5</color>
+    <color name="g_stroke">#18000000</color>
+    <color name="g_text">#1C1C1E</color>
+    <color name="g_dim">#6C6C70</color>
+    <color name="g_weekend">#8E8E93</color>
+    <color name="g_holiday">#FF3B30</color>
+    <color name="g_gold">#B7791F</color>
+    <color name="g_accent">#0A84FF</color>
+    <color name="g_today_text">#FFFFFF</color>
+    <color name="g_year">#10000000</color>
+    <color name="g_pill">#14000000</color>
 </resources>

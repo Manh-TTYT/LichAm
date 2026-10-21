@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="widget_desc">Ngày dương, âm lịch và ngày tốt xấu hôm nay</string>
+    <string name="widget_month_desc">Lịch tháng dương lịch kèm ngày âm bên dưới mỗi ngày</string>
 </resources>
