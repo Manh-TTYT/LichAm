@@ -1,0 +1,53 @@
+name: Build APK
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      HAS_KEYSTORE: ${{ secrets.KEYSTORE_BASE64 != '' }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: 8.9
+
+      # 1) APK cài trực tiếp lên điện thoại (ký bằng khóa debug, đủ để cài thử/dùng cá nhân)
+      - name: Build APK (debug)
+        run: gradle assembleDebug --no-daemon
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: LichViet-apk
+          path: app/build/outputs/apk/debug/app-debug.apk
+
+      # 2) Bản phát hành cho CH Play (.aab) - chỉ chạy khi đã khai báo khóa ký trong Secrets
+      - name: Giải mã khóa ký
+        if: env.HAS_KEYSTORE == 'true'
+        run: echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 -d > "$RUNNER_TEMP/lichviet.jks"
+
+      - name: Build AAB + APK (release)
+        if: env.HAS_KEYSTORE == 'true'
+        env:
+          KEYSTORE_FILE: ${{ runner.temp }}/lichviet.jks
+          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+        run: gradle bundleRelease assembleRelease --no-daemon
+
+      - uses: actions/upload-artifact@v4
+        if: env.HAS_KEYSTORE == 'true'
+        with:
+          name: LichViet-release
+          path: |
+            app/build/outputs/bundle/release/app-release.aab
+            app/build/outputs/apk/release/app-release.apk
